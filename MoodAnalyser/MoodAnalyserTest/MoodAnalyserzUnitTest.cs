@@ -6,9 +6,10 @@ namespace MoodAnalyserTest
         [Test]
         public void GivenStringMood_AnalyseMood_ReturnSadMood()
         {
-            Mood_Analyser.MoodAnalyser moodAnalyser = new Mood_Analyser.MoodAnalyser();
+            string message = "I am in Sad mood";
+            Mood_Analyser.MoodAnalyser moodAnalyser = new Mood_Analyser.MoodAnalyser(message.ToLower());
             
-            string actualResult = moodAnalyser.AnalyseMood("I'm in sad mood");
+            string actualResult = moodAnalyser.AnalyseMood();
             
             Assert.AreEqual("sad", actualResult);
         }
@@ -16,9 +17,10 @@ namespace MoodAnalyserTest
         [Test]
         public void GivenStringAnyMood_AnalyseMood_ReturnHappyMood()
         {
-            Mood_Analyser.MoodAnalyser moodAnalyser = new Mood_Analyser.MoodAnalyser();
+            string message = "I am in Happy mood";
+            Mood_Analyser.MoodAnalyser moodAnalyser = new Mood_Analyser.MoodAnalyser(message);
 
-            string actualResult = moodAnalyser.AnalyseMood("I'm in Any mood");
+            string actualResult = moodAnalyser.AnalyseMood();
 
             Assert.AreEqual("HAPPY", actualResult);
         }
