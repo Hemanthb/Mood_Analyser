@@ -154,5 +154,21 @@ namespace MoodAnalyserTest
             string mood = Mood_Analyser.MoodAnalyserReflector.InvokeAnalyseMood("AnalyseMood", "Happy");
             Assert.AreEqual(mood, message);
         }
+        [Test]
+        public void GivenImproperField_UseReflectorInvoke_ReturnExceptionNoField()
+        {
+            try
+            {
+                string message = "Happy";
+                string fieldName = "messag";
+                Object expected = new Mood_Analyser.MoodAnalyser(message);
+                Object actual = Mood_Analyser.MoodAnalyserReflector.SetField(message, fieldName);
+                Assert.AreEqual(expected.ToString(), actual.ToString());
+            }
+            catch (Mood_Analyser.MoodAnalyseException e)
+            {
+                Assert.AreEqual("Field is not Found", e.Message);
+            }
+        }
     }
 }
