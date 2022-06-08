@@ -170,5 +170,20 @@ namespace MoodAnalyserTest
                 Assert.AreEqual("Field is not Found", e.Message);
             }
         }
+        public void GivenNullInMessageField_UseReflectorInvoke_ReturnExceptionNullMessage()
+        {
+            try
+            {
+                string message = null;
+                string fieldName = "message";
+                Object expected = new Mood_Analyser.MoodAnalyser(message);
+                Object actual = Mood_Analyser.MoodAnalyserReflector.SetField(message, fieldName);
+                Assert.AreEqual(expected.ToString(), actual.ToString());
+            }
+            catch (Mood_Analyser.MoodAnalyseException e)
+            {
+                Assert.AreEqual("Field is not Found", e.Message);
+            }
+        }
     }
 }
