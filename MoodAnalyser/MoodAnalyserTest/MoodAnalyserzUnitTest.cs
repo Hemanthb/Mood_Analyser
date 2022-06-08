@@ -69,7 +69,7 @@ namespace MoodAnalyserTest
             string message = null;
             Object expected = new Mood_Analyser.MoodAnalyser(message);
 
-            Object obj = Mood_Analyser.MoodAnalyserFactory.CreateMoodAnalyse("Mood_Analyser.MoodAnalyser", "MoodAnalyser");
+            Object obj = Mood_Analyser.MoodAnalyserReflector.CreateMoodAnalyse("Mood_Analyser.MoodAnalyser", "MoodAnalyser");
             expected.Equals(obj);
         }
         [Test]
@@ -80,7 +80,7 @@ namespace MoodAnalyserTest
                 string message = null;
                 Object expected = new Mood_Analyser.MoodAnalyser(message);
 
-                Object obj = Mood_Analyser.MoodAnalyserFactory.CreateMoodAnalyse("Mood_Analyser.Moodanalyser", "Moodanalyser");
+                Object obj = Mood_Analyser.MoodAnalyserReflector.CreateMoodAnalyse("Mood_Analyser.Moodanalyser", "Moodanalyser");
                 expected.Equals(obj);
             }
             catch (Mood_Analyser.MoodAnalyseException e)
@@ -97,7 +97,7 @@ namespace MoodAnalyserTest
                 string message = null;
                 Object expected = new Mood_Analyser.MoodAnalyser(message);
 
-                Object obj = Mood_Analyser.MoodAnalyserFactory.CreateMoodAnalyse("Mood_Analyser.MoodAnalyser", "Moodanalyser");
+                Object obj = Mood_Analyser.MoodAnalyserReflector.CreateMoodAnalyse("Mood_Analyser.MoodAnalyser", "Moodanalyser");
                 expected.Equals(obj);
             }
             catch (Mood_Analyser.MoodAnalyseException e)
@@ -111,7 +111,7 @@ namespace MoodAnalyserTest
             string message = "HAPPY";
             Object expected = new Mood_Analyser.MoodAnalyser(message);
 
-            Object obj = Mood_Analyser.MoodAnalyserFactory.CreateMoodAnalyseUsingParameterizedConstructor("Mood_Analyser.MoodAnalyser", "MoodAnalyser", message);
+            Object obj = Mood_Analyser.MoodAnalyserReflector.CreateMoodAnalyseUsingParameterizedConstructor("Mood_Analyser.MoodAnalyser", "MoodAnalyser", message);
             expected.Equals(obj);
         }
         [Test]
@@ -122,7 +122,7 @@ namespace MoodAnalyserTest
                 string message = "sad";
                 Object expected = new Mood_Analyser.MoodAnalyser(message);
 
-                Object obj = Mood_Analyser.MoodAnalyserFactory.CreateMoodAnalyseUsingParameterizedConstructor("Mood_Analyser.MoodAnalyser", "MoodAnalyser", message);
+                Object obj = Mood_Analyser.MoodAnalyserReflector.CreateMoodAnalyseUsingParameterizedConstructor("Mood_Analyser.MoodAnalyser", "MoodAnalyser", message);
                 expected.Equals(obj);
             }
             catch (Mood_Analyser.MoodAnalyseException e)
@@ -138,7 +138,7 @@ namespace MoodAnalyserTest
                 string message = "sad";
                 Object expected = new Mood_Analyser.MoodAnalyser(message);
 
-                Object obj = Mood_Analyser.MoodAnalyserFactory.CreateMoodAnalyseUsingParameterizedConstructor("Mood_Analyser.MoodAnalyser", "MoodAnalyser", message);
+                Object obj = Mood_Analyser.MoodAnalyserReflector.CreateMoodAnalyseUsingParameterizedConstructor("Mood_Analyser.MoodAnalyser", "MoodAnalyser", message);
                 expected.Equals(obj);
             }
             catch (Mood_Analyser.MoodAnalyseException e)
@@ -151,7 +151,7 @@ namespace MoodAnalyserTest
         public void GivenHappy_InvokeMethod_ShouldReturnHappy()
         {
             string message = "HAPPY";
-            string mood = Mood_Analyser.MoodAnalyserFactory.InvokeAnalyseMood("AnalyseMood", "Happy");
+            string mood = Mood_Analyser.MoodAnalyserReflector.InvokeAnalyseMood("AnalyseMood", "Happy");
             Assert.AreEqual(mood, message);
         }
     }
