@@ -64,13 +64,29 @@ namespace MoodAnalyserTest
             }
         }
         [Test]
-        public void GivenMoodAnalyserObject_ShouldReturnMoodAnalyserClassname()
+        public void GivenMoodAnalyserClassName_ShouldReturnMoodAnalyserObject()
         {
             string message = null;
             Object expected = new Mood_Analyser.MoodAnalyser(message);
 
             Object obj = Mood_Analyser.MoodAnalyserFactory.CreateMoodAnalyse("Mood_Analyser.MoodAnalyser", "MoodAnalyser");
             expected.Equals(obj);
+        }
+        [Test]
+        public void GivenMoodAnalyserImproperClassName_ShouldReturnMoodAnalyserNoclassException()
+        {
+            try
+            {
+                string message = null;
+                Object expected = new Mood_Analyser.MoodAnalyser(message);
+
+                Object obj = Mood_Analyser.MoodAnalyserFactory.CreateMoodAnalyse("Mood_Analyser.Moodanalyser", "Moodanalyser");
+                expected.Equals(obj);
+            }
+            catch(Mood_Analyser.MoodAnalyseException e)
+            {
+                Assert.AreEqual("Class not Found",e.Message);
+            }
         }
     }
 }
