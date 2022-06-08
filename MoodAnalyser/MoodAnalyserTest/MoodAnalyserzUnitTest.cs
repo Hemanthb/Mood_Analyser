@@ -2,15 +2,15 @@ namespace MoodAnalyserTest
 {
     public class Tests
     {
-        
+
         [Test]
         public void GivenStringMood_AnalyseMood_ReturnSadMood()
         {
             string message = "I am in Sad mood";
             Mood_Analyser.MoodAnalyser moodAnalyser = new Mood_Analyser.MoodAnalyser(message.ToLower());
-            
+
             string actualResult = moodAnalyser.AnalyseMood();
-            
+
             Assert.AreEqual("sad", actualResult);
         }
 
@@ -83,9 +83,9 @@ namespace MoodAnalyserTest
                 Object obj = Mood_Analyser.MoodAnalyserFactory.CreateMoodAnalyse("Mood_Analyser.Moodanalyser", "Moodanalyser");
                 expected.Equals(obj);
             }
-            catch(Mood_Analyser.MoodAnalyseException e)
+            catch (Mood_Analyser.MoodAnalyseException e)
             {
-                Assert.AreEqual("Class not Found",e.Message);
+                Assert.AreEqual("Class not Found", e.Message);
             }
         }
 
@@ -104,6 +104,15 @@ namespace MoodAnalyserTest
             {
                 Assert.AreEqual("Constructor not Found", e.Message);
             }
+        }
+        [Test]
+        public void GivenMoodAnalyseProperMesssage_UseParameterizedConstructor_ReturnMoodAnalyserObject()
+        {
+            string message = "HAPPY";
+            Object expected = new Mood_Analyser.MoodAnalyser(message);
+
+            Object obj = Mood_Analyser.MoodAnalyserFactory.CreateMoodAnalyseUsingParameterizedConstructor("Mood_Analyser.MoodAnalyser", "MoodAnalyser", message);
+            expected.Equals(obj);
         }
     }
 }
